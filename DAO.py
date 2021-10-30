@@ -1,6 +1,6 @@
-from User import *
+from ORM import *
 
-class DAO:
+class UserDao:
     def __init__(self, db: DBLayer):
         self.db = db
 
@@ -106,3 +106,33 @@ class DAO:
         return users
 
 
+class FileDAO:
+    def __init__(self, db: DBLayer):
+        self.db = db
+
+    def create(self, file : File):
+        template = "INSERT INTO files (name, format, load_date, size, owner) VALUES (?, ?, ?, ?, ?)"
+        result = self.db.execute(template, (file.name, file.format, file.load_date, file.size, file.owner))
+        last_id = self.db.cursor.lastrowid
+        file._id = last_id
+        return file
+
+    def all(self):
+        template = "SELECT files.id, files.name, files.format, files.load_date, files.size, user.name FROM files " \
+                   "inner join user on user.id = files.owner " \
+                   "ORDER BY files.id"
+        result = self.db.execute(template)
+        if not result:
+            return None
+        files = [File(*x) for x in result]
+        return files
+
+    def read(self, _arg):
+        template = "SELECT files.id, files.name, files.format, files.load_date, files.size, user.name FROM files " \
+                   "inner join user on user.id = files.owner " \
+                   "WHERE files.id = ?"
+        result = self.db.execute(template, str(_arg))
+        if not result:
+            return None
+        file = File(*result[0])
+        return file

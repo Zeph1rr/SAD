@@ -39,7 +39,6 @@ class DBLayer:
         self.execute("INSERT INTO positions (name) VALUES ('Администратор');")
         self.execute("INSERT INTO positions (name) VALUES ('Начальник');")
         self.execute("INSERT INTO positions (name) VALUES ('Сотрудник');")
-
         self.execute("""CREATE TABLE user(
                     id integer PRIMARY KEY,
                     name TEXT NOT NULL,
@@ -69,6 +68,7 @@ class DBLayer:
         self.execute("INSERT INTO departments (name, head) VALUES ('Бухгалтерия', 2);")
         self.execute("INSERT INTO departments (name, head) VALUES ('IT-Отдел', 4);")
 
+
         self.execute("""CREATE TABLE departments_users(
                      department_id integer,
                      user_id integer,
@@ -86,6 +86,19 @@ class DBLayer:
         self.execute("INSERT INTO departments_users VALUES (2, 4)")
         self.execute("INSERT INTO departments_users VALUES (2, 3)")
         self.execute("INSERT INTO departments_users VALUES (2, 1)")
+
+
+        self.execute("""CREATE TABLE files(
+                    id integer PRIMARY KEY,
+                    name TEXT,
+                    format VARCHAR(4),
+                    load_date DATE,
+                    size TEXT,
+                    owner INT,
+                    FOREIGN KEY (owner) REFERENCES user(id)
+                    ON UPDATE CASCADE 
+                    ON DELETE CASCADE); 
+                    """)
 
         print("[+] INFO: Database initialized")
 

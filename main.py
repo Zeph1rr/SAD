@@ -1,11 +1,16 @@
-from UserDAOImpl import *
+from DAO import *
 from DBLayer import *
-from User import  *
+from ORM import  *
+from datetime import date
+from os import path
+from os import makedirs
+from shutil import copy
 
 
 def main():
     database = DBLayer(":memory:")
-    user_dao = DAO(database)
+    user_dao = UserDao(database)
+    file_dao = FileDAO(database)
     while True:
         command = input("command: ")
         if command == "create":
@@ -70,6 +75,29 @@ def main():
             else:
                 for user in users:
                     print(user)
+        elif command == "upload":
+            file = input("Абсолютный путь к файлу: ")
+            new_file = File(None, path.split(file)[1], file.split('.')[-1], date.today(), path.getsize(file), input("Владелец: "))
+            file_dao.create(new_file)
+            try:
+                copy(file, path.join('uploads', new_file.owner, new_file.name))
+            except FileNotFoundError:
+                makedirs(path.join('uploads', new_file.owner))
+                copy(file, path.join('uploads', new_file.owner, new_file.name))
+            print(file_dao.read(new_file._id))
+        elif command == "files":
+            files = file_dao.all()
+            if not files:
+                print('[ERROR]: There are no files in the database!')
+            else:
+                for file in files:
+                    print(file)
+        elif command == 'file':
+            file = file_dao.read(input("id = "))
+            if not file:
+                print('[ERROR]: User not found!')
+            else:
+                print(file)
         elif command == "exit":
             user_dao.db.close()
             break

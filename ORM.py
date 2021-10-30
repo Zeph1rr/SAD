@@ -19,3 +19,15 @@ class Position:
 
     def __str__(self):
         return f"Должность(id: {self.id}, Название: {self.name})"
+
+class File:
+    def __init__(self, id, name, format, load_date, size, owner):
+        self._id = id
+        self.name = name
+        self.format = format
+        self.load_date = load_date
+        self.size = size
+        self.owner = owner
+
+    def __str__(self):
+        return f"Файл(id: {self._id}, Название: {self.name}, Формат: {self.format}, Дата загрузки: {self.load_date}, Размер: {self.size}b, Хозяин: {self.owner})"
