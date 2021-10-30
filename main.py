@@ -1,6 +1,6 @@
-from UserDAOImpl import *
+from DAO import *
 from DBLayer import *
-from User import  *
+from TableClasses import  *
 
 
 def main():
@@ -51,20 +51,6 @@ def main():
                     print(user)
         elif command == "phone":
             users = user_dao.search_by_phone(input("Phone: "))
-            if not users:
-                print('[ERROR]: There are no users in the database!')
-            else:
-                for user in users:
-                    print(user)
-        elif command == "department":
-            users = user_dao.search_by_department(input("Department: "))
-            if not users:
-                print('[ERROR]: There are no users in the database!')
-            else:
-                for user in users:
-                    print(user)
-        elif command == "position":
-            users = user_dao.search_by_pos(input("Position: "))
             if not users:
                 print('[ERROR]: There are no users in the database!')
             else:

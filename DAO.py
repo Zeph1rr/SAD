@@ -1,4 +1,4 @@
-from User import *
+from TableClasses import *
 
 class DAO:
     def __init__(self, db: DBLayer):
@@ -79,30 +79,6 @@ class DAO:
         users = [User(*x) for x in result]
         return users
 
-    def search_by_department(self, string):
-        template = "SELECT user.id, user.name, user.birthday, positions.name, user.phone, departments.name FROM user " \
-                   "inner join positions on user.pos_id = positions.id " \
-                   "inner join departments_users as du on du.user_id = user.id " \
-                   "inner join departments on du.department_id = departments.id " \
-                   "WHERE departments.name LIKE '%%%s%%' " \
-                   "ORDER BY user.id" % (string)
-        result = self.db.execute(template)
-        if not result:
-            return None
-        users = [User(*x) for x in result]
-        return users
 
-    def search_by_pos(self, string):
-        template = "SELECT user.id, user.name, user.birthday, positions.name, user.phone, departments.name FROM user " \
-                   "inner join positions on user.pos_id = positions.id " \
-                   "inner join departments_users as du on du.user_id = user.id " \
-                   "inner join departments on du.department_id = departments.id " \
-                   "WHERE positions.name LIKE '%%%s%%' " \
-                   "ORDER BY user.id" % (string)
-        result = self.db.execute(template)
-        if not result:
-            return None
-        users = [User(*x) for x in result]
-        return users
 
 

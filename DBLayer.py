@@ -51,11 +51,11 @@ class DBLayer:
                     ON DELETE CASCADE
                     );
                 """)
-        self.execute("INSERT INTO user (name, birthday, pos_id, phone ) VALUES ('Григорьев Антон Дмитриевич', '2000-11-03', 1, '+71234567890')")
-        self.execute("INSERT INTO user (name, birthday, pos_id, phone ) VALUES ('Ясенев Олег Викторович', '2000-09-26', 2, '+70987654321')")
-        self.execute("INSERT INTO user (name, birthday, pos_id, phone ) VALUES ('Кулаков Виктор Олегович', '2000-05-12', 3, '+79251234567')")
-        self.execute("INSERT INTO user (name, birthday, pos_id, phone ) VALUES ('Алибабаев Алибаба Алибабаевич', '1989-01-01', 2,'+79251234568' )")
-        self.execute("INSERT INTO user (name, birthday, pos_id, phone ) VALUES ('Никонова Анастасия Вадимовна', '2002-01-11', 3,'+79251234569' )")
+        self.execute("INSERT INTO user (name, birthday, pos_id, phone ) VALUES ('user1', '2000-11-03', 1, '+79161111111')")
+        self.execute("INSERT INTO user (name, birthday, pos_id, phone ) VALUES ('user2', '2000-09-26', 2, '+79161111112')")
+        self.execute("INSERT INTO user (name, birthday, pos_id, phone ) VALUES ('user3', '2000-05-12', 3, '+79161111113')")
+        self.execute("INSERT INTO user (name, birthday, pos_id, phone ) VALUES ('user4', '1989-01-01', 2, '+79161111114')")
+        self.execute("INSERT INTO user (name, birthday, pos_id, phone ) VALUES ('user5', '2002-01-11', 3, '+79161111115')")
 
         self.execute("""CREATE TABLE departments(
                      id integer PRIMARY KEY,
@@ -66,8 +66,8 @@ class DBLayer:
                      ON DELETE CASCADE
                      );
                 """)
-        self.execute("INSERT INTO departments (name, head) VALUES ('Бухгалтерия', 2);")
-        self.execute("INSERT INTO departments (name, head) VALUES ('IT-Отдел', 4);")
+        self.execute("INSERT INTO departments (name, head) VALUES ('dep1', 2);")
+        self.execute("INSERT INTO departments (name, head) VALUES ('dep2', 4);")
 
         self.execute("""CREATE TABLE departments_users(
                      department_id integer,
