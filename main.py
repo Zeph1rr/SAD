@@ -98,8 +98,11 @@ def commands(command, user_dao, file_dao):
         file = file_dao.read(input('id = '))
         print(file)
         file.owner = file_dao.get_owner_id(file._id)
+        filepath = input('Абсолютный путь к папке выгрузки: ')
+        if not path.isdir(filepath):
+            makedirs(filepath)
         try:
-            copy(path.join('uploads', str(file.owner), str(file.name)), f'C:\\Users\\{environ.get( "USERNAME" )}\\Desktop\\{file.name}')
+            copy(path.join('uploads', str(file.owner), str(file.name)), filepath)
         except FileNotFoundError:
             print('[ОШИБКА] Файл не найден')
             file_dao.delete(file._id)
