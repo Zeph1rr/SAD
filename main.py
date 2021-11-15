@@ -15,14 +15,20 @@ def commands(command, user_dao, file_dao):
         print(user_dao.read(user._id))
     elif command == "2":
         user = user_dao.read(input("id = "))
+        files = file_dao.get_all_by_owner(user._id)
         if not user:
             print('[ОШИБКА]: Ничего не найдено!')
         else:
             print(user)
+            if not files:
+                return None
+            print('Файлы:')
+            for file in files:
+                print(file)
     elif command == "4":
         id = input("id = ")
         print(user_dao.read(id))
-        accessment = input("Вы уверены, что хотите удалить данного пользователя?\n1.Да\n2.Нет: ")
+        accessment = input("Вы уверены, что хотите удалить данного пользователя?\n1.Да\n2.Нет\n")
         if accessment == '1':
             user_dao.delete(id)
     elif command == "1":
@@ -107,7 +113,7 @@ def commands(command, user_dao, file_dao):
     elif command == "15":
         file = file_dao.read(input('id = '))
         print(file)
-        accessment = input("Вы уверены, что хотите удалить данный файл?\n1.Да\n2.Нет:  ")
+        accessment = input("Вы уверены, что хотите удалить данный файл?\n1.Да\n2.Нет\n")
         if accessment == '1':
             file.owner = file_dao.get_owner_id(file._id)
             file_dao.delete(file._id)

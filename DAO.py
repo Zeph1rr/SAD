@@ -146,5 +146,13 @@ class FileDAO:
         file = File(*result[0])
         return file
 
-    def download(self, _arg):
-        file = self.read(_arg)
+    def get_all_by_owner(self, _arg):
+        template = "SELECT files.id, files.name, files.format, files.load_date, files.size, user.name FROM files " \
+                   "inner join user on user.id = files.owner " \
+                   "WHERE user.id = ?"
+        result = self.db.execute(template, str(_arg))
+        if not result:
+            return None
+        files = [File(*x) for x in result]
+        return files
+
