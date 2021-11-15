@@ -1,14 +1,21 @@
 import sqlite3
-import traceback
+import datetime
+
 
 
 class DBLayer:
     def __init__(self, path: str):
         self.connection = sqlite3.connect(path, check_same_thread=False)
-        print("[+] INFO: Connection started")
+        self.logging("INFO: Connection started")
         self.cursor = self.connection.cursor()
-        print("[+] INFO: Cursor created")
+        self.logging("INFO: Cursor created")
         self.init_db()
+
+    def logging(self, message):
+        now = datetime.datetime.now()
+        now = f'{now.year}-{now.month}-{now.day} {now.hour}:{now.minute}:{now.second}'
+        with open('log.txt', 'a') as file:
+            file.write(f'[+] timestamp: {now}, {message}\n')
 
     def execute(self, sql: str, attr=()):
         try:
@@ -24,10 +31,10 @@ class DBLayer:
     def close(self):
         if self.cursor:
             self.cursor.close()
-            print("[+] INFO: Cursor deleted")
+            self.logging("INFO: Cursor deleted")
         if self.connection:
             self.connection.close()
-            print("[+] INFO: Connection closed")
+            self.logging("INFO: Connection closed")
 
     def init_db(self):
         self.execute("""CREATE TABLE positions(
@@ -100,7 +107,7 @@ class DBLayer:
                     ON DELETE CASCADE); 
                     """)
 
-        print("[+] INFO: Database initialized")
+        self.logging("INFO: Database initialized")
 
 
 # db = DBLayer(":memory:")

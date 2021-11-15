@@ -76,7 +76,15 @@ def commands(command, user_dao, file_dao):
     elif command == "13":
         file = input("Абсолютный путь к файлу: ")
         try:
-            new_file = File(None, path.split(file)[1], file.split('.')[-1], date.today(), path.getsize(file), input("Владелец: "))
+            allowed_format = ['jpeg', 'png', 'bmp', 'gif']
+            new_file = File(None, path.split(file)[1], file.split('.')[-1], date.today(), path.getsize(file), None)
+            if new_file.size > 10485760:
+                print('[ОШИБКА] Файл слишком велик!')
+                return None
+            if new_file.format not in allowed_format:
+                print('[ОШИБКА] Недопустимый формат!')
+                return None
+            new_file.owner = input("Владелец: ")
             file_dao.create(new_file)
             try:
                 copy(file, path.join('uploads', new_file.owner, new_file.name))
