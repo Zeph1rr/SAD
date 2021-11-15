@@ -34,7 +34,7 @@ class DBLayer:
             self.logging("INFO: Cursor deleted")
         if self.connection:
             self.connection.close()
-            self.logging("INFO: Connection closed")
+            self.logging("INFO: Connection closed\n\n")
 
     def init_db(self):
         self.execute("""CREATE TABLE positions(
