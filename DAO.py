@@ -110,12 +110,21 @@ class FileDAO:
     def __init__(self, db: DBLayer):
         self.db = db
 
+    def get_owner_id(self, _arg):
+        template = "Select owner from files where id = ?"
+        result = self.db.execute(template, str(_arg))
+        return result[0][0]
+
     def create(self, file : File):
         template = "INSERT INTO files (name, format, load_date, size, owner) VALUES (?, ?, ?, ?, ?)"
         result = self.db.execute(template, (file.name, file.format, file.load_date, file.size, file.owner))
         last_id = self.db.cursor.lastrowid
         file._id = last_id
         return file
+
+    def delete(self, _arg):
+        template = "DELETE  FROM files WHERE id = ?"
+        result = self.db.execute(template, str(_arg))
 
     def all(self):
         template = "SELECT files.id, files.name, files.format, files.load_date, files.size, user.name FROM files " \
@@ -136,3 +145,6 @@ class FileDAO:
             return None
         file = File(*result[0])
         return file
+
+    def download(self, _arg):
+        file = self.read(_arg)
