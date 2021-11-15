@@ -2,10 +2,8 @@ from DAO import *
 from DBLayer import *
 from ORM import  *
 from datetime import date
-from os import path
-from os import makedirs
-from os import environ
-from os import remove
+from os import path, makedirs, remove, system, name
+
 from shutil import copy
 from time import sleep
 
@@ -139,6 +137,12 @@ def main():
     database = DBLayer(":memory:")
     user_dao = UserDao(database)
     file_dao = FileDAO(database)
+    if name == 'nt':
+        system('cls')
+    else:
+        system('clear')
+    print('Программа "Справочник"')
+    sleep(3)
     menu = """Выберите действие:
     1. Просмотр всех пользователей
     2. Просмотр конкретного пользователя по id
