@@ -105,6 +105,12 @@ class UserDao:
         users = [User(*x) for x in result]
         return users
 
+    def get_users_count(self):
+        template = "SELECT COUNT(*) FROM user"
+        result = self.db.execute(template)
+        return result[0][0]
+
+
 
 class FileDAO:
     def __init__(self, db: DBLayer):
@@ -156,3 +162,27 @@ class FileDAO:
         files = [File(*x) for x in result]
         return files
 
+    def search_by_format(self, _arg):
+        template = "SELECT files.id, files.name, files.format, files.load_date, files.size, user.name FROM files " \
+                   "inner join user on user.id = files.owner " \
+                   "WHERE files.format LIKE '%%%s%%'" % str(_arg)
+        result = self.db.execute(template)
+        if not result:
+            return None
+        files = [File(*x) for x in result]
+        return files
+
+    def search_by_size(self, arg1, arg2):
+        template = "SELECT files.id, files.name, files.format, files.load_date, files.size, user.name FROM files " \
+                   "inner join user on user.id = files.owner " \
+                   "WHERE files.size BETWEEN ? and ?"
+        result = self.db.execute(template, (arg1, arg2))
+        if not result:
+            return None
+        files = [File(*x) for x in result]
+        return files
+
+    def get_count_by_id(self, _arg):
+        template = "SELECT COUNT(*) as count FROM files WHERE owner=?"
+        result = self.db.execute(template, str(_arg))
+        return result[0][0]

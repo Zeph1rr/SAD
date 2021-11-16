@@ -24,7 +24,6 @@ class DBLayer:
         except Exception as ex:
             self.connection.rollback()
             result = "[+] ERROR: Wrong query!"
-            print(ex)
         finally:
             return result
 
@@ -46,6 +45,8 @@ class DBLayer:
         self.execute("INSERT INTO positions (name) VALUES ('Администратор');")
         self.execute("INSERT INTO positions (name) VALUES ('Начальник');")
         self.execute("INSERT INTO positions (name) VALUES ('Сотрудник');")
+
+
         self.execute("""CREATE TABLE user(
                     id integer PRIMARY KEY,
                     name TEXT NOT NULL,
@@ -107,14 +108,7 @@ class DBLayer:
                     ON DELETE CASCADE); 
                     """)
 
+        for i in range(1,21):
+            self.execute(f"INSERT INTO files(name, format, load_date, size, owner) VALUES ('{i}.bmp', 'bmp', '2021-11-16', '13', 4);")
+
         self.logging("INFO: Database initialized")
-
-
-# db = DBLayer(":memory:")
-# sql = "SELECT * FROM user"
-# try:
-#     print(db.execute(sql).fetchall())
-# except:
-#     print(db.execute(sql))
-#
-# db.close()
