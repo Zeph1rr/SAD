@@ -4,6 +4,7 @@ from ORM import  *
 from datetime import date
 from os import path, makedirs, remove, system, name
 from shutil import copy, copytree
+from logo import get_logo
 
 
 def clear():
@@ -124,6 +125,9 @@ def commands(command, user_dao, file_dao):
             if int(file_dao.get_count_by_id(new_file.owner)) >= 20:
                 print('[ОШИБКА] Лимит файлов для данного пользователя исчерпан')
                 return None
+            if path.isfile(path.join('uploads', new_file.owner, new_file.name)):
+                print('[ОШИБКА] Файл с таким именем у этого пользователя уже существует!')
+                return None
             file_dao.create(new_file)
             try:
                 copy(file, path.join('uploads', new_file.owner, new_file.name))
@@ -134,12 +138,17 @@ def commands(command, user_dao, file_dao):
         except FileNotFoundError:
             print('[ОШИБКА] Такого файла не существует!')
     elif command == "14":
-        file = file_dao.read(input('id = '))
+        try:
+            file = file_dao.read(input('id = '))
+        except:
+            print('[ОШИБКА]: Ничего не найдено!')
+            return None
         if not file:
             print("[ОШИБКА]: Ничего не найдено!")
             return None
         print(file)
         file.owner = file_dao.get_owner_id(file._id)
+        print(file.owner)
         filepath = input('Абсолютный путь к папке выгрузки: ')
         if filepath:
             if not path.isdir(filepath):
@@ -147,7 +156,7 @@ def commands(command, user_dao, file_dao):
             try:
                 copy(path.join('uploads', str(file.owner), str(file.name)), filepath)
             except FileNotFoundError:
-                print('[ОШИБКА] Файл не найден')
+                print(f'[ОШИБКА] Файл не найден { path.join("uploads", str(file.owner), str(file.name)) }')
                 file_dao.delete(file._id)
     elif command == "15":
         file = file_dao.read(input('id = '))
@@ -227,4 +236,6 @@ def main():
 if __name__ == '__main__':
     main()
     clear()
-    print('Спасибо, что воспользовались приложением "Справочник"!', end='')
+    print('Спасибо, что воспользовались приложением "Справочник"!')
+    print(get_logo())
+    input('\nНажмите Enter для выхода из программы...')

@@ -117,8 +117,8 @@ class FileDAO:
         self.db = db
 
     def get_owner_id(self, _arg):
-        template = "Select owner from files where id = ?"
-        result = self.db.execute(template, str(_arg))
+        template = f"Select owner from files where id = {_arg}"
+        result = self.db.execute(template)
         return result[0][0]
 
     def create(self, file : File):
@@ -129,8 +129,8 @@ class FileDAO:
         return file
 
     def delete(self, _arg):
-        template = "DELETE  FROM files WHERE id = ?"
-        result = self.db.execute(template, str(_arg))
+        template = f"DELETE  FROM files WHERE id = {_arg}"
+        result = self.db.execute(template)
 
     def all(self):
         template = "SELECT files.id, files.name, files.format, files.load_date, files.size, user.name FROM files " \
@@ -145,8 +145,8 @@ class FileDAO:
     def read(self, _arg):
         template = "SELECT files.id, files.name, files.format, files.load_date, files.size, user.name FROM files " \
                    "inner join user on user.id = files.owner " \
-                   "WHERE files.id = ?"
-        result = self.db.execute(template, str(_arg))
+                   f"WHERE files.id = {_arg}"
+        result = self.db.execute(template)
         if not result:
             return None
         file = File(*result[0])
@@ -155,8 +155,8 @@ class FileDAO:
     def get_all_by_owner(self, _arg):
         template = "SELECT files.id, files.name, files.format, files.load_date, files.size, user.name FROM files " \
                    "inner join user on user.id = files.owner " \
-                   "WHERE user.id = ?"
-        result = self.db.execute(template, str(_arg))
+                   f"WHERE user.id = {_arg}"
+        result = self.db.execute(template)
         if not result:
             return None
         files = [File(*x) for x in result]
@@ -183,6 +183,6 @@ class FileDAO:
         return files
 
     def get_count_by_id(self, _arg):
-        template = "SELECT COUNT(*) as count FROM files WHERE owner=?"
-        result = self.db.execute(template, str(_arg))
+        template = f"SELECT COUNT(*) as count FROM files WHERE owner={_arg}"
+        result = self.db.execute(template)
         return result[0][0]

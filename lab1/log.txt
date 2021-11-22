@@ -1,3 +1,94 @@
 [+] timestamp: 2021-11-16 18:18:27, INFO: Connection started
 [+] timestamp: 2021-11-16 18:18:27, INFO: Cursor created
 [+] timestamp: 2021-11-16 18:18:27, INFO: Database initialized
+[+] timestamp: 2021-11-22 17:21:49, INFO: Connection started
+[+] timestamp: 2021-11-22 17:21:49, INFO: Cursor created
+[+] timestamp: 2021-11-22 17:21:49, INFO: Database initialized
+[+] timestamp: 2021-11-22 17:21:53, INFO: Cursor deleted
+[+] timestamp: 2021-11-22 17:21:53, INFO: Connection closed
+
+
+[+] timestamp: 2021-11-22 17:30:54, INFO: Connection started
+[+] timestamp: 2021-11-22 17:30:54, INFO: Cursor created
+[+] timestamp: 2021-11-22 17:30:54, INFO: Database initialized
+[+] timestamp: 2021-11-22 17:32:41, INFO: Connection started
+[+] timestamp: 2021-11-22 17:32:41, INFO: Cursor created
+[+] timestamp: 2021-11-22 17:32:41, INFO: Database initialized
+[+] timestamp: 2021-11-22 17:36:49, INFO: Connection started
+[+] timestamp: 2021-11-22 17:36:49, INFO: Cursor created
+[+] timestamp: 2021-11-22 17:36:49, INFO: Database initialized
+[+] timestamp: 2021-11-22 17:39:16, INFO: Connection started
+[+] timestamp: 2021-11-22 17:39:16, INFO: Cursor created
+[+] timestamp: 2021-11-22 17:39:16, INFO: Database initialized
+[+] timestamp: 2021-11-22 17:39:52, INFO: Connection started
+[+] timestamp: 2021-11-22 17:39:52, INFO: Cursor created
+[+] timestamp: 2021-11-22 17:39:52, INFO: Database initialized
+[+] timestamp: 2021-11-22 17:41:23, INFO: Connection started
+[+] timestamp: 2021-11-22 17:41:23, INFO: Cursor created
+[+] timestamp: 2021-11-22 17:41:23, INFO: Database initialized
+[+] timestamp: 2021-11-22 17:42:16, INFO: Cursor deleted
+[+] timestamp: 2021-11-22 17:42:16, INFO: Connection closed
+
+
+[+] timestamp: 2021-11-22 18:7:50, INFO: Connection started
+[+] timestamp: 2021-11-22 18:7:50, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:7:50, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:8:2, INFO: Connection started
+[+] timestamp: 2021-11-22 18:8:2, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:8:2, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:8:7, INFO: Connection started
+[+] timestamp: 2021-11-22 18:8:7, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:8:7, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:8:21, INFO: Connection started
+[+] timestamp: 2021-11-22 18:8:21, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:8:21, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:8:25, INFO: Connection started
+[+] timestamp: 2021-11-22 18:8:25, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:8:25, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:9:19, INFO: Connection started
+[+] timestamp: 2021-11-22 18:9:19, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:9:19, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:9:57, INFO: Connection started
+[+] timestamp: 2021-11-22 18:9:57, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:9:57, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:11:33, INFO: Connection started
+[+] timestamp: 2021-11-22 18:11:33, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:11:33, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:14:44, INFO: Cursor deleted
+[+] timestamp: 2021-11-22 18:14:44, INFO: Connection closed
+
+
+[+] timestamp: 2021-11-22 18:16:10, INFO: Connection started
+[+] timestamp: 2021-11-22 18:16:10, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:16:10, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:17:2, INFO: Cursor deleted
+[+] timestamp: 2021-11-22 18:17:2, INFO: Connection closed
+
+
+[+] timestamp: 2021-11-22 18:17:4, INFO: Connection started
+[+] timestamp: 2021-11-22 18:17:4, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:17:4, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:19:58, INFO: Connection started
+[+] timestamp: 2021-11-22 18:19:58, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:19:58, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:29:2, INFO: Cursor deleted
+[+] timestamp: 2021-11-22 18:29:2, INFO: Connection closed
+
+
+[+] timestamp: 2021-11-22 18:29:3, INFO: Connection started
+[+] timestamp: 2021-11-22 18:29:3, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:29:3, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:29:35, INFO: Connection started
+[+] timestamp: 2021-11-22 18:29:35, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:29:35, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:29:42, INFO: Cursor deleted
+[+] timestamp: 2021-11-22 18:29:42, INFO: Connection closed
+
+
+[+] timestamp: 2021-11-22 18:32:11, INFO: Connection started
+[+] timestamp: 2021-11-22 18:32:11, INFO: Cursor created
+[+] timestamp: 2021-11-22 18:32:11, INFO: Database initialized
+[+] timestamp: 2021-11-22 18:32:32, INFO: Cursor deleted
+[+] timestamp: 2021-11-22 18:32:32, INFO: Connection closed
+
+
